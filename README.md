@@ -1,9 +1,9 @@
-##WWILDWOOD RUN
+## WILDWOOD RUN
 ![Wildwood Run 9_ cover](https://github.com/omaaradel/Wildwood-Run-/assets/116403978/27500c6c-8c35-4c18-9160-c3e747f1ab9e)
 
-####Welcome to Wildwood Run, a thrilling 2D platformer game created using Unity. In this game, you take on the role of a cunning fox navigating a lush forest filled with obstacles, enemies, and exciting puzzles. This README file provides you with all the information you need to get started with the game, including installation instructions, gameplay overview, and more.
+#### Welcome to Wildwood Run, a thrilling 2D platformer game created using Unity. In this game, you take on the role of a cunning fox navigating a lush forest filled with obstacles, enemies, and exciting puzzles. This README file provides you with all the information you need to get started with the game, including installation instructions, gameplay overview, and more.
 
-###Gameplay and Features
+### Gameplay & Features
 
 Wildwood Run offers an exciting gaming experience with a combination of engaging gameplay elements and features:
 
@@ -23,7 +23,7 @@ Effector System: Wildwood Run incorporates an effector system to create interact
 
 Enemy AI: Enemies in the forest are equipped with intelligent AI, providing challenging and dynamic encounters.
 
-###Controls
+### Controls
 
 Move Left: ← Arrow key or 'A' key
 Move Right: → Arrow key or 'D' key
@@ -37,4 +37,4 @@ Menu Navigation: Use the arrow keys or mouse to navigate the menus.
 Download it easily in your windows using Itchio. Link: https://omaaradel.itch.io/wildwood-run
 
 
-####We hope you enjoy playing Wildwood Run as much as we enjoyed creating it! If you have any questions or feedback, please don't hesitate to reach out. Happy gaming!
+#### We hope you enjoy playing Wildwood Run as much as we enjoyed creating it! If you have any questions or feedback, please don't hesitate to reach out. Happy gaming!
