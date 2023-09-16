@@ -1,7 +1,7 @@
 ## WILDWOOD RUN
 ![Wildwood Run 9_ cover](https://github.com/omaaradel/Wildwood-Run-/assets/116403978/27500c6c-8c35-4c18-9160-c3e747f1ab9e)
 
-#### Welcome to Wildwood Run, a thrilling 2D platformer game created using Unity. In this game, you take on the role of a cunning fox navigating a lush forest filled with obstacles, enemies, and exciting puzzles. This README file provides you with all the information you need to get started with the game, including installation instructions, gameplay overview, and more.
+#### Wildwood Run is a thrilling 2D platformer game set in a mystical forest filled with various challenges. Players embark on an epic adventure through multiple levels, solving puzzles, avoiding traps, and battling enemies to progress. The game offers an immersive experience with beautifully designed levels, intuitive controls, and an engaging storyline.
 
 ### Gameplay & Features
 
@@ -9,19 +9,16 @@ Wildwood Run offers an exciting gaming experience with a combination of engaging
 
 Objective: Your goal is to guide the cunning fox through the forest, collecting rewards, solving puzzles, and defeating enemies to reach the end of each level.
 
-Obstacles: The forest is filled with various obstacles such as spikes, pits, and moving platforms that will challenge your agility and reflexes.
+Level Progression: Unlock new levels by successfully completing the previous ones.
 
-Enemies: Be on the lookout for cunning forest creatures that will try to impede your progress. Defeat them using your fox's unique abilities.
+Puzzles: Solve intricate puzzles to advance through the game.
 
-Puzzles: To add an element of strategy and fun, the game includes puzzles that you'll need to solve to advance through certain levels.
+Enemies: Battle against a variety of enemies with distinct behaviors and abilities.
+Traps: Avoid deadly traps and obstacles that test your agility and reflexes.
 
-Sound Management: Enjoy an immersive gaming experience with dynamic sound effects that complement the gameplay.
+Menus: Enjoy fully functional menus for starting the game, pausing, and handling game over situations.
 
-Menus: The game features a user-friendly start menu, pause menu, and main menu, making it easy to navigate and control your gaming experience.
-
-Effector System: Wildwood Run incorporates an effector system to create interactive elements within the forest, adding depth and variety to the gameplay.
-
-Enemy AI: Enemies in the forest are equipped with intelligent AI, providing challenging and dynamic encounters.
+Sound Management: Immerse yourself in the game with dynamic sound effects and background music.
 
 ### Controls
 
