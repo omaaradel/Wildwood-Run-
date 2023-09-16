@@ -5,10 +5,11 @@ using UnityEngine;
 public class winning : MonoBehaviour
 {
 	public GameObject wonpanel;
-	public GameObject gems;
+	public GameObject gemstext;
 	private Collect manager;
 	public bool won ;
 	public AudioSource winsound;
+	public int Gemsneeded;
 	// Start is called before the first frame update
 	private void Start()
     {
@@ -18,12 +19,11 @@ public class winning : MonoBehaviour
 	}
     private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.CompareTag("Player") && manager.score>=1)
+		if (collision.gameObject.CompareTag("Player") && manager.score>=Gemsneeded)
 		{
-			//if (gameObject != null) winsound.Play();
-			Destroy(gameObject);
+		    winsound.Play();
 			wonpanel.SetActive(true);
-			gems.SetActive(false);
+			gemstext.SetActive(false);
 			won = true;
 			Time.timeScale = 0;
 			

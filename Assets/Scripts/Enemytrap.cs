@@ -17,6 +17,10 @@ public class Enemytrap : MonoBehaviour
         gemstm.SetActive(true);
         manager = GameObject.Find("Player").GetComponent<Fox_Move>();
     }
+    private void Update()
+    {
+        if (transform.position.y < -25) { Game0ver(); }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy") )
@@ -47,6 +51,6 @@ public class Enemytrap : MonoBehaviour
     public void backmainmenus()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(0);
     }
 }

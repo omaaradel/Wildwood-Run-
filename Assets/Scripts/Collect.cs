@@ -13,14 +13,12 @@ public class Collect : MonoBehaviour
 	public GameObject collectEffect;
 	public AudioSource collectsound;
 	public AudioSource wonsound;
-	private winning manager;
 
 	// Use this for initialization
 	void Start()
 	{
 		score = 0;
 		scoretext.text = "Gems: " + score;
-		manager = GameObject.Find("Key").GetComponent<winning>();
 
 	}
    // private void FixedUpdate()
