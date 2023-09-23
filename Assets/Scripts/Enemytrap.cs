@@ -10,12 +10,15 @@ public class Enemytrap : MonoBehaviour
     public GameObject gameovertm;
     public GameObject gemstm;
     private Fox_Move manager;
+    private Collect managerCollect;
     public AudioSource killsound;
+    public FloatSO scoreSO;
     private void Start()
     {
         gameovertm.SetActive(false);
         gemstm.SetActive(true);
         manager = GameObject.Find("Player").GetComponent<Fox_Move>();
+        managerCollect = GameObject.Find("Player").GetComponent<Collect>();
     }
     private void Update()
     {
@@ -38,6 +41,8 @@ public class Enemytrap : MonoBehaviour
     void Game0ver()
     {
         isdead = true;
+        scoreSO.Value -= managerCollect.scoreAddedOneLevel;
+
         gameovertm.SetActive(true);
         gemstm.SetActive(false);
 

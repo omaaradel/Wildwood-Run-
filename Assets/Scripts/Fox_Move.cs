@@ -5,7 +5,7 @@ using System.Collections;
 public class Fox_Move : MonoBehaviour {
 
     public float speed,jumpForce,cooldownHit;
-	public bool running,up,down,jumping,crouching,attacking,special;
+	public bool running,up,down,jumping,crouching,attacking,shooting;
     private Rigidbody2D rb;
     private Animator anim;
 	private SpriteRenderer sp;
@@ -15,7 +15,10 @@ public class Fox_Move : MonoBehaviour {
 	private Enemytrap manager;
 	public AudioSource punchsound;
 	public AudioSource Jumpcsound;
-
+	public Transform firePoint; // The position from which bullets will be fired.
+	public GameObject bulletPrefab; // The bullet object to be spawned.
+	public float bulletSpeed = 10f;
+	
 
 	// Use this for initialization
 	void Start () {
@@ -44,7 +47,7 @@ public class Fox_Move : MonoBehaviour {
 				{
 					Movement();
 					Attack();
-					Special();
+					Shoot();
 				}
 				Jump();
 				Crouch();
@@ -117,15 +120,36 @@ public class Fox_Move : MonoBehaviour {
 			attacking=true;
 			punchsound.Play();
 		}
+        
 	}
 
 	void AttackEnd(){
 		attacking=false;
 	}
 
-	void Special(){
-			anim.SetBool("Special",false);
+	void Shoot(){	
+		if (Input.GetKey(KeyCode.S) )
+		{
+			anim.SetBool("Special", true);
+			Shooty();
+		}
+
+		else
+		{
+			anim.SetBool("Special", false);
+			
+		}
+
+	}
+	void Shooty()
+	{
+		GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 		
+		bullet.transform.Rotate(Vector3.forward * -90);
+		Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+		rb.velocity = firePoint.right * bulletSpeed;
+
+		Destroy(bullet, 1f);
 	}
 
 	void Crouch(){
@@ -138,7 +162,7 @@ public class Fox_Move : MonoBehaviour {
 	}
 	void dead()
 	{
-		Debug.Log("manga");
+		
 		anim.SetTrigger("Dead");
 		rb.bodyType = RigidbodyType2D.Static;
 		
@@ -170,3 +194,4 @@ public class Fox_Move : MonoBehaviour {
 
 
 }
+	

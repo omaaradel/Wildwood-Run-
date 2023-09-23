@@ -7,18 +7,24 @@ using TMPro;
 //[RequireComponent(typeof(AudioSource))]
 public class Collect : MonoBehaviour
 {
-
-	public int score;
-	public TextMeshProUGUI scoretext;
-	public GameObject collectEffect;
-	public AudioSource collectsound;
-	public AudioSource wonsound;
+	[SerializeField]
+	private int score;
+	[SerializeField]
+	private TextMeshProUGUI scoretext;
+	[SerializeField]
+	private GameObject collectEffect;
+	[SerializeField]
+	private AudioSource collectsound;
+	[SerializeField]
+	private AudioSource wonsound;
+	public int scoreAddedOneLevel;
+	public FloatSO scoreSO;
 
 	// Use this for initialization
 	void Start()
 	{
-		score = 0;
-		scoretext.text = "Gems: " + score;
+		score = 0; scoreAddedOneLevel= 0;
+		scoretext.text = "Gems: " + scoreSO.Value;
 
 	}
    // private void FixedUpdate()
@@ -33,8 +39,9 @@ public class Collect : MonoBehaviour
     public void addscore()
 	{
 
-		score += 1;
-		scoretext.text = "Gems: " + score;
+		scoreSO.Value ++;
+		scoreAddedOneLevel++;
+		scoretext.text = "Gems: " + scoreSO.Value;
 		collectsound.Play();
 
 	}
