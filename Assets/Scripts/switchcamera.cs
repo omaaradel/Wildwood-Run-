@@ -22,12 +22,18 @@ public class switchcamera : MonoBehaviour
     //        manager = 0;
     //    }
     //}
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             cam2();
+            BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+            if (boxCollider != null)
+            {
+                boxCollider.isTrigger = false;
+            }
         }
+       
     }
    
     public void cam2()

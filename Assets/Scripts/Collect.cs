@@ -19,6 +19,7 @@ public class Collect : MonoBehaviour
 	private AudioSource wonsound;
 	public int scoreAddedOneLevel;
 	public FloatSO scoreSO;
+	public int Gemsneeded;
 
 	// Use this for initialization
 	void Start()

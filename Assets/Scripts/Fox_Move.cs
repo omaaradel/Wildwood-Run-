@@ -13,11 +13,14 @@ public class Fox_Move : MonoBehaviour {
 	private GameObject[] life;
 	private int qtdLife;
 	private Enemytrap manager;
+	private winning wonmanager;
+	private float buildindex;
 	public AudioSource punchsound;
 	public AudioSource Jumpcsound;
 	public Transform firePoint; // The position from which bullets will be fired.
 	public GameObject bulletPrefab; // The bullet object to be spawned.
 	public float bulletSpeed = 10f;
+
 	
 
 	// Use this for initialization
@@ -26,6 +29,9 @@ public class Fox_Move : MonoBehaviour {
         anim = GetComponent<Animator>();
 		sp=GetComponent<SpriteRenderer>();
 		manager = GameObject.Find("Player").GetComponent<Enemytrap>();
+		wonmanager = GameObject.Find("Chest Golden").GetComponent<winning>();
+		Scene currentScene = SceneManager.GetActiveScene();
+		buildindex = currentScene.buildIndex;
 		running =false;
 		up=false;
 		down=false;
@@ -35,33 +41,41 @@ public class Fox_Move : MonoBehaviour {
 		//life=GameObject.FindGameObjectsWithTag("Life");
 		//qtdLife=life.Length;
 	}
-	
+
 	// Update is called once per frame
-	void FixedUpdate () {
-		//Character doesnt choose direction in Jump	   //If you want to choose direction in jump
-		if (!manager.isdead)
+	void FixedUpdate()
+	{
+		
+		if (!manager.isdead && !wonmanager.won)
 		{
 			if (attacking == false)
-			{                                                   //just delete the (jumping==false)
+			{                                                  
 				if (crouching == false)
 				{
 					Movement();
 					Attack();
-					Shoot();
+					if (buildindex==5)  Shoot();
 				}
 				Jump();
 				Crouch();
-				
+
 			}
 
 		}
-        else { dead(); }
-			
+		else if (manager.isdead) { dead(); }
+		 if (wonmanager.won) {
+			running = false;
+			up = false;
+			down = false;
+			jumping = false;
+			crouching = false;
 		}
 
-	
+	}
 
-	void Movement(){
+
+
+void Movement(){
 		//Character Move
 		float move = Input.GetAxisRaw("Horizontal");
 			//Run
@@ -128,6 +142,7 @@ public class Fox_Move : MonoBehaviour {
 	}
 
 	void Shoot(){	
+			
 		if (Input.GetKey(KeyCode.S) )
 		{
 			anim.SetBool("Special", true);
