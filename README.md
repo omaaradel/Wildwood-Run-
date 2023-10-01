@@ -1,7 +1,13 @@
 ## WILDWOOD RUN
-![Wildwood Run 9_ cover](https://github.com/omaaradel/Wildwood-Run-/assets/116403978/27500c6c-8c35-4c18-9160-c3e747f1ab9e)
 
-#### Wildwood Run is a thrilling 2D platformer game set in a mystical forest filled with various challenges. Players embark on an epic adventure through multiple levels, solving puzzles, avoiding traps, and battling enemies to progress. The game offers an immersive experience with beautifully designed levels, intuitive controls, and an engaging storyline.
+
+
+https://github.com/omaaradel/Wildwood-Run-/assets/116403978/48be785b-b6c0-4799-9b6e-733c36b528a2
+
+
+
+
+#### Wildwood Run is a thrilling 2D platformer game set in a mystical forest filled with various challenges. Players embark on an epic adventure through multiple levels, solving puzzles, avoiding traps, and battling enemies to progress. The game offers an immersive experience with beautifully designed levels, intuitive controls, and an engaging storyline. Try it from here: https://omaaradel.itch.io/wildwood-run
 
 ### Gameplay & Features
 
@@ -26,6 +32,7 @@ Move Left: ← Arrow key or 'A' key
 Move Right: → Arrow key or 'D' key
 Jump: ↑  'Spacebar'
 Attack: 'C' key
+Shoot: 'S' key
 Crouch: Down Arrow key
 Menu Navigation: Use the arrow keys or mouse to navigate the menus.
 
