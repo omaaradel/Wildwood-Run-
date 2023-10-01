@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class enemygfx : MonoBehaviour
+public class EnemyGFX : MonoBehaviour
 {
-    // Start is called before the first frame update
     public AIPath aiPath;
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (aiPath.desiredVelocity.x >= 0.01f)
@@ -23,5 +20,6 @@ public class enemygfx : MonoBehaviour
         {
             transform.localScale = new Vector3(0.3f, 0.3f, 1);
         }
+        
     }
 }

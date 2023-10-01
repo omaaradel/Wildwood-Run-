@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movingladder : MonoBehaviour
+public class MovingLadder : MonoBehaviour
 {
-    public Transform[] patrolPoints;
-    public float moveSpeed;
-    public int patrolDestination;
-    // Update is called once per frame
+    [SerializeField] Transform[] patrolPoints;
+    [SerializeField] float moveSpeed;
+    [SerializeField] int patrolDestination;
     void Update()
     {
         if (patrolDestination == 0)

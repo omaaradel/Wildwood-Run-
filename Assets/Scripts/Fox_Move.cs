@@ -4,49 +4,41 @@ using System.Collections;
 
 public class Fox_Move : MonoBehaviour {
 
-    public float speed,jumpForce,cooldownHit;
-	public bool running,up,down,jumping,crouching,attacking,shooting;
+	public bool running, up, down, jumping, crouching, attacking, shooting;
+
     private Rigidbody2D rb;
     private Animator anim;
 	private SpriteRenderer sp;
-	private float rateOfHit;
-	private GameObject[] life;
-	private int qtdLife;
 	private Enemytrap manager;
-	private winning wonmanager;
-	private float buildindex;
-	public AudioSource punchsound;
-	public AudioSource Jumpcsound;
-	public Transform firePoint; // The position from which bullets will be fired.
-	public GameObject bulletPrefab; // The bullet object to be spawned.
-	public float bulletSpeed = 10f;
+	private AudioManager audioManager;
+	private winning wonManager;
+	private float buildIndex;
 
-	
+	[SerializeField] Transform firePoint;
+	[SerializeField] GameObject bulletPrefab;
+	[SerializeField] float speed, jumpForce, cooldownHit;
+	[SerializeField] float bulletSpeed = 10f;
 
-	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 		sp=GetComponent<SpriteRenderer>();
 		manager = GameObject.Find("Player").GetComponent<Enemytrap>();
-		wonmanager = GameObject.Find("Chest Golden").GetComponent<winning>();
+		audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
+		wonManager = GameObject.Find("Chest Golden").GetComponent<winning>();
 		Scene currentScene = SceneManager.GetActiveScene();
-		buildindex = currentScene.buildIndex;
+		buildIndex = currentScene.buildIndex;
 		running =false;
 		up=false;
 		down=false;
 		jumping=false	;
 		crouching=false;
-		rateOfHit=Time.time;
-		//life=GameObject.FindGameObjectsWithTag("Life");
-		//qtdLife=life.Length;
 	}
 
-	// Update is called once per frame
 	void FixedUpdate()
 	{
 		
-		if (!manager.isdead && !wonmanager.won)
+		if (!manager.isdead && !wonManager.won)
 		{
 			if (attacking == false)
 			{                                                  
@@ -54,7 +46,7 @@ public class Fox_Move : MonoBehaviour {
 				{
 					Movement();
 					Attack();
-					if (buildindex==5)  Shoot();
+					if (buildIndex == 5)  Shoot();
 				}
 				Jump();
 				Crouch();
@@ -63,7 +55,7 @@ public class Fox_Move : MonoBehaviour {
 
 		}
 		else if (manager.isdead) { dead(); }
-		 if (wonmanager.won) {
+		 if (wonManager.won) {
 			running = false;
 			up = false;
 			down = false;
@@ -106,7 +98,7 @@ void Movement(){
 		//Jump
 		if(Input.GetKey(KeyCode.Space)&&rb.velocity.y==0){
 			rb.AddForce(new Vector2(rb.velocity.x,jumpForce));
-			Jumpcsound.Play();
+			audioManager.playSFX(audioManager.playerJump);
 
 		}
 		//Jump Animation
@@ -132,7 +124,7 @@ void Movement(){
 			rb.velocity=new Vector2(0,0);
 			anim.SetTrigger("Attack");
 			attacking=true;
-			punchsound.Play();
+			audioManager.playSFX(audioManager.playerPunch);
 		}
         
 	}
@@ -159,7 +151,7 @@ void Movement(){
 	void Shooty()
 	{
 		GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-		
+		audioManager.playSFX(audioManager.playerShoot);
 		bullet.transform.Rotate(Vector3.forward * -90);
 		Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 		rb.velocity = firePoint.right * bulletSpeed;

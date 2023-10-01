@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform[] patrolPoints;
-    public float moveSpeed;
-    public int patrolDestination;
+    [SerializeField] Transform[] patrolPoints;
+    [SerializeField] float moveSpeed;
+    [SerializeField] int patrolDestination;
 
-
-    // Update is called once per frame
     void Update()
     {
         if (patrolDestination == 0)

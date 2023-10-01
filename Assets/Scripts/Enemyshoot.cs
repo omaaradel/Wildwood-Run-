@@ -4,38 +4,37 @@ using UnityEngine;
 
 public class Enemyshoot : MonoBehaviour
 {
-    public Transform firePoint; 
-    public GameObject bulletPrefab; 
-    public float bulletSpeed = 10f; 
-     
+    public float currentHealth;
+
     private Animator anim;
-    private bool shooting;
-    private float maxHealth=300;
-    private float currentHealth ;
-    
-    [SerializeField] private Healthbar healthbar;
-    [SerializeField] private GameObject jumpplatform;
-    [SerializeField] private GameObject battlecamera;
-    [SerializeField] private AudioSource shootsound;
+    private AudioManager audioManager;
+    private float maxHealth=500;
+
+    [SerializeField] Transform firePoint;
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField]  Healthbar healthBar;
+    [SerializeField]  GameObject jumpPlatform;
+    [SerializeField]  GameObject battleCamera;
+    [SerializeField] float bulletSpeed = 10f;
 
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        shooting = false;
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         InvokeRepeating("Shoot", 3f, 3f);
         currentHealth = maxHealth;
-        healthbar.updatehealthbar(maxHealth, currentHealth);
+        healthBar.updatehealthbar(maxHealth, currentHealth);
 
     }
 
     void Shoot()
     {
-        if (battlecamera.activeSelf)
+        if (battleCamera.activeSelf)
         {
 
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            shootsound.Play();
+            audioManager.playSFX(audioManager.enemyShoot);
             anim.SetTrigger("shooting");
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.velocity = -firePoint.right * bulletSpeed;
@@ -51,10 +50,10 @@ public class Enemyshoot : MonoBehaviour
         {
             Destroy(collision.gameObject);
             currentHealth -= 1;
-            healthbar.updatehealthbar(maxHealth, currentHealth);
+            healthBar.updatehealthbar(maxHealth, currentHealth);
             if (currentHealth <= 0) {
                 Destroy(gameObject);
-                jumpplatform.SetActive(true);
+                jumpPlatform.SetActive(true);
                 }
         }
     }   

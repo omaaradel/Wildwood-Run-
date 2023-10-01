@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Levelchoice : MonoBehaviour
+public class LevelChoice : MonoBehaviour
 {
     public void backtomain()
     {

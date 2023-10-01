@@ -5,20 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class winning : MonoBehaviour
 {
-	public GameObject wonpanel;
-	public GameObject gemstext;
-	private Collect manager;
+	public bool won;
+	private int nextScene;
+
+	private AudioManager audioManager;
 	private StarManager starManage;
-	public bool won ;
-	public AudioSource winsound;
-	public int nextScene;
+
+	[SerializeField] GameObject wonMenu;
+	[SerializeField] GameObject gemstext;
+	
+	
 	// Start is called before the first frame update
 	private void Start()
     {
 		won = false;
-		wonpanel.SetActive(false);
-		manager = GameObject.Find("Player").GetComponent<Collect>();
+		wonMenu.SetActive(false);
 		starManage = GameObject.Find("Canvas").GetComponent<StarManager>();
+		audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
 		nextScene = SceneManager.GetActiveScene().buildIndex + 1;
 
 	}
@@ -26,16 +29,15 @@ public class winning : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag("Player"))
 		{
-		    winsound.Play();
-			wonpanel.SetActive(true);
+			audioManager.playSFX(audioManager.playerWin);
+			wonMenu.SetActive(true);
 			gemstext.SetActive(false);
 			won = true;
-			starManage.ShowStars(3);
+			starManage.showStars(3);
 			if (nextScene > PlayerPrefs.GetInt("levelAt"))
 				{
 				PlayerPrefs.SetInt("levelAt", nextScene);
                 }
-			//Time.timeScale = 0;
 			
 
 		}

@@ -8,8 +8,8 @@ using TMPro;
 public class Rotate : MonoBehaviour
 {
 
-	public bool rotate;
-	public float rotationSpeed;
+	[SerializeField] bool rotate;
+	[SerializeField] float rotationSpeed;
 
 
 

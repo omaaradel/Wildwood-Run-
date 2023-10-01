@@ -4,11 +4,13 @@ using System.Collections.Generic;
 
 public class MoveBackground : MonoBehaviour
 {
-    [SerializeField] private Vector2 parallaxEffectMultiplier;
+    
     private Transform cameraTransform;
     private Vector3 lastCameraPosition;
     private float textureUnitSizeX;
     private float textureUnitSizeY;
+
+    [SerializeField]  Vector2 parallaxEffectMultiplier;
 
     private void Start()
     {

@@ -7,21 +7,14 @@ public class switchcameraback : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject camera1;
     [SerializeField] private GameObject camera2;
-    [SerializeField] private int manager;
+    private switchcamera manager;
+    private GameManager gameManager;
 
-    //public void managecamera()
-    //{
-    //    if (manager == 0)
-    //    {
-    //        cam2();
-    //        manager = 1;
-    //    }
-    //    else
-    //    {
-    //        cam1();
-    //        manager = 0;
-    //    }
-    //}
+    private void Start()
+    {
+        manager = GameObject.Find("Square").GetComponent<switchcamera>();
+        gameManager  = GameObject.Find("Game manager").GetComponent<GameManager>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -33,6 +26,8 @@ public class switchcameraback : MonoBehaviour
     {
         camera1.SetActive(true);
         camera2.SetActive(false);
+        manager.camera1working = true;
+        gameManager.bgSoundPlayed = false;
     }
    
 }

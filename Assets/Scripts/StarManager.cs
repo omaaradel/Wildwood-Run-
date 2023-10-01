@@ -3,46 +3,46 @@ using UnityEngine;
 
 public class StarManager : MonoBehaviour
 {
-    [SerializeField] Star[] Stars;
-
-    [SerializeField] float EnlargeScale = 1.5f;
-    [SerializeField] float ShrinkScale = 1f;
-    [SerializeField] float EnlargeDuration = 0.25f;
-    [SerializeField] float ShrinkDuration = 0.25f;
-
     private Collect manager;
     private float starsDeserved;
-    void Start()
+
+    [SerializeField] Star[] stars;
+    [SerializeField] float enlargeScale = 1.5f;
+    [SerializeField] float shrinkScale = 1f;
+    [SerializeField] float enlargeDuration = 0.25f;
+    [SerializeField] float shrinkDuration = 0.25f;
+
+    void Start()    
     {
         
         manager = GameObject.Find("Player").GetComponent<Collect>();
     }
 
-    public void ShowStars(int numberOfStars)
+    public void showStars(int numberOfStars)
     {
         StartCoroutine(ShowStarsRoutine(numberOfStars));
     }
 
     private IEnumerator ShowStarsRoutine(int numberOfStars)
     {
-        foreach (Star star in Stars)
+        foreach (Star star in stars)
         {
             star.YellowStar.transform.localScale = Vector3.zero;
         }
-        if (manager.scoreAddedOneLevel>=manager.Gemsneeded) { starsDeserved = 3; }
-        else if (manager.scoreAddedOneLevel >= manager.Gemsneeded/2) { starsDeserved = 2; }
+        if (manager.scoreAddedOneLevel>=manager.gemsNeeded) { starsDeserved = 3; }
+        else if (manager.scoreAddedOneLevel >= manager.gemsNeeded / 2) { starsDeserved = 2; }
         else { starsDeserved = 1; }
 
         for (int i = 0; i < starsDeserved; i++)
         {
-            yield return StartCoroutine(EnlargeAndShrinkStar(Stars[i]));
+            yield return StartCoroutine(EnlargeAndShrinkStar(stars[i]));
         }
     }
 
     private IEnumerator EnlargeAndShrinkStar(Star star)
     {
-        yield return StartCoroutine(ChangeStarScale(star, EnlargeScale, EnlargeDuration));
-        yield return StartCoroutine(ChangeStarScale(star, ShrinkScale, ShrinkDuration));
+        yield return StartCoroutine(ChangeStarScale(star, enlargeScale, enlargeDuration));
+        yield return StartCoroutine(ChangeStarScale(star, shrinkScale, shrinkDuration));
     }
 
     private IEnumerator ChangeStarScale(Star star, float targetScale, float duration)

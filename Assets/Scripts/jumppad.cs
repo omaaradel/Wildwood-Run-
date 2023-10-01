@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class jumppad : MonoBehaviour
+public class JumpPad : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float jumpforce=10;
+    [SerializeField] float jumpforce=10;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
