@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 7839383975005124611}
   - component: {fileID: 7839383975005124632}
   - component: {fileID: 7839383975005124614}
+  - component: {fileID: 1498890577264990548}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -187,7 +188,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9114332332026948748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -239,20 +240,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d005370b84cf9904dab35eafbda7ccc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
-  jumpForce: 400
-  cooldownHit: 0
   running: 0
   up: 0
   down: 0
   jumping: 0
   crouching: 0
   attacking: 0
-  special: 0
-  punchsound: {fileID: 7839383975005124608}
-  Jumpcsound: {fileID: 7839383975005124609}
+  shooting: 0
   firePoint: {fileID: 1033473645}
   bulletPrefab: {fileID: 299704523749818039, guid: d18879def111cb24897e1979a54783b7, type: 3}
+  speed: 150
+  jumpForce: 400
+  cooldownHit: 0
   bulletSpeed: 40
 --- !u!82 &7839383975005124615
 AudioSource:
@@ -747,9 +746,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isdead: 0
-  gameovertm: {fileID: 0}
-  gemstm: {fileID: 0}
-  killsound: {fileID: 7839383975005124610}
+  scoreSO: {fileID: 0}
+  gameoverMenu: {fileID: 0}
+  gemsText: {fileID: 0}
 --- !u!114 &7839383975005124614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,9 +761,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad9686c4d9ce6e47bab7d91d153f6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  scoretext: {fileID: 0}
-  collectEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f, type: 3}
-  collectsound: {fileID: 7839383975005124615}
-  wonsound: {fileID: 7839383975005124611}
   scoreSO: {fileID: 11400000, guid: 62f73f2a6307db0419f49f7daf411b0c, type: 2}
+  scoreAddedOneLevel: 0
+  gemsNeeded: 0
+  scoreText: {fileID: 0}
+  collectEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f, type: 3}
+--- !u!70 &1498890577264990548
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9114332332026948748}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.027097065, y: 0.029513538}
+  m_Size: {x: 0.41850248, y: 1.2227807}
+  m_Direction: 0

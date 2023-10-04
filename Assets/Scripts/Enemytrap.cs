@@ -27,7 +27,7 @@ public class Enemytrap : MonoBehaviour
     }
     private void Update()
     {
-        if (transform.position.y < -25) { Game0ver(); }
+        if (transform.position.y < -25 && !isdead) { Game0ver(); }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
