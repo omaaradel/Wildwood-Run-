@@ -40,7 +40,8 @@ public class Fox_Move : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-#if UNITY_STANDALONE_WIN 
+		//movementMobile();
+		//#if UNITY_STANDALONE_WIN 
 
 		if (!manager.isdead && !wonManager.won)
 		{
@@ -72,32 +73,39 @@ public class Fox_Move : MonoBehaviour {
 
 
 
-	void Movement() {
-		//Character Move
-		float move = Input.GetAxisRaw("Horizontal");
-		//Run
-		rb.velocity = new Vector2(move * speed * Time.deltaTime * 2, rb.velocity.y);
-		running = true;
-		//Turn
-		if (rb.velocity.x < 0) {
-			sp.flipX = true;
-		} else if (rb.velocity.x > 0) {
-			sp.flipX = false;
-		}
-		//Movement Animation
-		//if(rb.velocity.x!=0&&running==false){
-		//	anim.SetBool("Walking",true);
-		//}else{
-		//	anim.SetBool("Walking",false);
-		//}
-		if (rb.velocity.x != 0 && running == true) {
-			anim.SetBool("Running", true);
-		} else {
-			anim.SetBool("Running", false);
-		}
-	}
+    void Movement()
+    {
+        //Character Move
+        float move = Input.GetAxisRaw("Horizontal");
+        //Run
+        rb.velocity = new Vector2(move * speed * Time.deltaTime * 2, rb.velocity.y);
+        running = true;
+        //Turn
+        if (rb.velocity.x < 0)
+        {
+            sp.flipX = true;
+        }
+        else if (rb.velocity.x > 0)
+        {
+            sp.flipX = false;
+        }
+        //Movement Animation
+        //if(rb.velocity.x!=0&&running==false){
+        //	anim.SetBool("Walking",true);
+        //}else{
+        //	anim.SetBool("Walking",false);
+        //}
+        if (rb.velocity.x != 0 && running == true)
+        {
+            anim.SetBool("Running", true);
+        }
+        else
+        {
+            anim.SetBool("Running", false);
+        }
+    }
 
-	public void Jump() {
+    public void Jump() {
 		//Jump
 
 		if (Input.GetKey(KeyCode.Space) && rb.velocity.y == 0)
@@ -180,17 +188,98 @@ public class Fox_Move : MonoBehaviour {
 
 	}
 
-	// Android functions
-#elif UNITY_ANDROID
-  void dead()
+    // Android functions
+    //#elif UNITY_ANDROID
+
+   
+    void movementMobile() {
+		//Run
+		rb.velocity = new Vector2(myJoystick.Horizontal * speed *2* Time.deltaTime, rb.velocity.y);
+		running = true;
+		//Turn
+		if (rb.velocity.x < 0) {
+			sp.flipX = true;
+		} else if (rb.velocity.x > 0) {
+			sp.flipX = false;
+		}
+		if (rb.velocity.x != 0 && running == true) {
+			anim.SetBool("Running", true);
+		} else {
+			anim.SetBool("Running", false);
+		}
+	}
+	public void jumpMobile()
+	{
+		//Jump
+
+		if (rb.velocity.y == 0)
+		{
+			rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
+			audioManager.playSFX(audioManager.playerJump);
+
+		}
+		//Jump Animation
+		if (rb.velocity.y > 0 && up == false)
+		{
+			up = true;
+			jumping = true;
+			anim.SetTrigger("Up");
+		}
+		else if (rb.velocity.y < 0 && down == false)
+		{
+			down = true;
+			jumping = true;
+			anim.SetTrigger("Down");
+		}
+		else if (rb.velocity.y == 0 && (up == true || down == true))
+		{
+			up = false;
+			down = false;
+			jumping = false;
+			anim.SetTrigger("Ground");
+		}
+	}
+	public void crouchMobile()
+	{
+		//Crouch
+		if (isMobile)
+		{
+			anim.SetBool("Crouching", true);
+		}
+		else
+		{
+			anim.SetBool("Crouching", false);
+		}
+	}
+	public void shootMobile()
 	{
 
-		anim.SetTrigger("Dead");
-		rb.bodyType = RigidbodyType2D.Static;
+		if (isMobile)
+		{
+			anim.SetBool("Special", true);
+			Shooty();
+		}
+
+		else
+		{
+			anim.SetBool("Special", false);
+
+		}
+
+	}
+	public void attackMobile()
+	{                                                             //I activated the attack animation and when the 
+																  //Atacking																//animation finish the event calls the AttackEnd()
+		if (isMobile)
+		{
+			rb.velocity = new Vector2(0, 0); 
+			anim.SetTrigger("Attack");
+			attacking = true;
+			audioManager.playSFX(audioManager.playerPunch);
+		}
 
 	}
 
-
-#endif
+	//#endif
 
 }
