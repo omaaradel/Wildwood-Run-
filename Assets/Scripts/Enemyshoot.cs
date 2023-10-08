@@ -8,6 +8,7 @@ public class Enemyshoot : MonoBehaviour
 
     private Animator anim;
     private AudioManager audioManager;
+    private Enemytrap manager;
     private float maxHealth=500;
 
     [SerializeField] Transform firePoint;
@@ -22,6 +23,7 @@ public class Enemyshoot : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
+        manager = GameObject.Find("Player").GetComponent<Enemytrap>();
         InvokeRepeating("Shoot", 3f, 3f);
         currentHealth = maxHealth;
         healthBar.updatehealthbar(maxHealth, currentHealth);
@@ -30,7 +32,7 @@ public class Enemyshoot : MonoBehaviour
 
     void Shoot()
     {
-        if (battleCamera.activeSelf)
+        if (battleCamera.activeSelf && !manager.isdead)
         {
 
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

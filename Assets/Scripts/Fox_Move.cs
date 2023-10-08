@@ -19,10 +19,18 @@ public class Fox_Move : MonoBehaviour {
 	[SerializeField] Transform firePoint;
 	[SerializeField] FixedJoystick myJoystick;
 	[SerializeField] GameObject bulletPrefab;
+	[SerializeField] GameObject mobileMovementTools;
 	[SerializeField] float speed, jumpForce, cooldownHit;
 	[SerializeField] float bulletSpeed = 10f;
 
 	void Start() {
+
+		#if UNITY_ANDROID
+		mobileMovementTools.SetActive(true);
+		#else
+		mobileMovementTools.SetActive(false);
+		#endif
+
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
 		sp = GetComponent<SpriteRenderer>();
@@ -40,9 +48,32 @@ public class Fox_Move : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		//movementMobile();
 		//#if UNITY_STANDALONE_WIN 
 
+#if UNITY_ANDROID
+		movementMobile();
+		
+		
+		if (rb.velocity.y > 0 && up == false)
+		{
+			up = true;
+			jumping = true;
+			anim.SetTrigger("Up");
+		}
+		else if (rb.velocity.y < 0 && down == false)
+		{
+			down = true;
+			jumping = true;
+			anim.SetTrigger("Down");
+		}
+		else if (rb.velocity.y == 0 && (up == true || down == true))
+		{
+			up = false;
+			down = false;
+			jumping = false;
+			anim.SetTrigger("Ground");
+		}
+#else
 		if (!manager.isdead && !wonManager.won)
 		{
 			if (attacking == false)
@@ -50,7 +81,7 @@ public class Fox_Move : MonoBehaviour {
 				if (crouching == false)
 				{
 					Movement();
-					Attack();
+					if (rb.velocity.y == 0) Attack();
 					if (buildIndex == 5) Shoot();
 				}
 				Jump();
@@ -59,8 +90,10 @@ public class Fox_Move : MonoBehaviour {
 			}
 
 		}
-		else if (manager.isdead) { dead(); }
-		if (wonManager.won) {
+#endif
+		if (manager.isdead) { dead(); }
+		if (wonManager.won)
+		{
 			running = false;
 			up = false;
 			down = false;
@@ -68,12 +101,82 @@ public class Fox_Move : MonoBehaviour {
 			crouching = false;
 		}
 	}
+	void movementMobile()
+	{
+		//Run
+		rb.velocity = new Vector2(myJoystick.Horizontal * speed * 2 * Time.deltaTime, rb.velocity.y);
+		running = true;
+		//Turn
+		if (rb.velocity.x < 0)
+		{
+			sp.flipX = true;
+		}
+		else if (rb.velocity.x > 0)
+		{
+			sp.flipX = false;
+		}
+		if (rb.velocity.x != 0 && running == true)
+		{
+			anim.SetBool("Running", true);
+		}
+		else
+		{
+			anim.SetBool("Running", false);
+		}
+	}
+	public void jumpMobile()
+	{
+		//Jump
 
+		if (rb.velocity.y == 0)
+		{
+			rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
+			audioManager.playSFX(audioManager.playerJump);
 
+		}
+		
+	}
+	public void crouchMobile()
+	{
+		//crouch
+        if (!crouching && !jumping)
+        {
+            anim.SetBool("Crouching", true);
+			crouching = true;
+        }
+        else
+        {
+            anim.SetBool("Crouching", false);
+			crouching = false;
+		}
+    }
+	public void shootMobile()
+	{
 
+		if (!crouching)
+		{
+			anim.SetTrigger("Special");
+			Shooty();
+		}
 
+		
 
-    void Movement()
+	}
+	public void attackMobile()
+	{                                                             //I activated the attack animation and when the 
+																  //Atacking																//animation finish the event calls the AttackEnd()
+		if (!crouching)
+		{
+			rb.velocity = new Vector2(0, 0);
+			anim.SetTrigger("Attack");
+			attacking = true;
+			audioManager.playSFX(audioManager.playerPunch);
+		}
+
+	}
+
+	//#endif
+	void Movement()
     {
         //Character Move
         float move = Input.GetAxisRaw("Horizontal");
@@ -150,14 +253,8 @@ public class Fox_Move : MonoBehaviour {
 
 		if (Input.GetKey(KeyCode.S))
 		{
-			anim.SetBool("Special", true);
+			anim.SetTrigger("Special");
 			Shooty();
-		}
-
-		else
-		{
-			anim.SetBool("Special", false);
-
 		}
 
 	}
@@ -192,94 +289,6 @@ public class Fox_Move : MonoBehaviour {
     //#elif UNITY_ANDROID
 
    
-    void movementMobile() {
-		//Run
-		rb.velocity = new Vector2(myJoystick.Horizontal * speed *2* Time.deltaTime, rb.velocity.y);
-		running = true;
-		//Turn
-		if (rb.velocity.x < 0) {
-			sp.flipX = true;
-		} else if (rb.velocity.x > 0) {
-			sp.flipX = false;
-		}
-		if (rb.velocity.x != 0 && running == true) {
-			anim.SetBool("Running", true);
-		} else {
-			anim.SetBool("Running", false);
-		}
-	}
-	public void jumpMobile()
-	{
-		//Jump
-
-		if (rb.velocity.y == 0)
-		{
-			rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
-			audioManager.playSFX(audioManager.playerJump);
-
-		}
-		//Jump Animation
-		if (rb.velocity.y > 0 && up == false)
-		{
-			up = true;
-			jumping = true;
-			anim.SetTrigger("Up");
-		}
-		else if (rb.velocity.y < 0 && down == false)
-		{
-			down = true;
-			jumping = true;
-			anim.SetTrigger("Down");
-		}
-		else if (rb.velocity.y == 0 && (up == true || down == true))
-		{
-			up = false;
-			down = false;
-			jumping = false;
-			anim.SetTrigger("Ground");
-		}
-	}
-	public void crouchMobile()
-	{
-		//Crouch
-		if (isMobile)
-		{
-			anim.SetBool("Crouching", true);
-		}
-		else
-		{
-			anim.SetBool("Crouching", false);
-		}
-	}
-	public void shootMobile()
-	{
-
-		if (isMobile)
-		{
-			anim.SetBool("Special", true);
-			Shooty();
-		}
-
-		else
-		{
-			anim.SetBool("Special", false);
-
-		}
-
-	}
-	public void attackMobile()
-	{                                                             //I activated the attack animation and when the 
-																  //Atacking																//animation finish the event calls the AttackEnd()
-		if (isMobile)
-		{
-			rb.velocity = new Vector2(0, 0); 
-			anim.SetTrigger("Attack");
-			attacking = true;
-			audioManager.playSFX(audioManager.playerPunch);
-		}
-
-	}
-
-	//#endif
+   
 
 }
