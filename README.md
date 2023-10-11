@@ -14,12 +14,19 @@ https://github.com/omaaradel/Wildwood-Run-/assets/116403978/48be785b-b6c0-4799-9
 Wildwood Run is not only an exciting game but also a showcase of sophisticated coding and game mechanics:
 
 Parallax Backgrounds: We've implemented a parallax effect to add depth and immersion to the game's backgrounds, enhancing the visual experience.
+
 Audio Management: Our audio script and mixer handle dynamic sound effects and background music, ensuring a captivating auditory experience.
+
 Level Selection & Data Handling: We've developed a level selection scene that efficiently loads and saves player data, making navigation between levels seamless.
+
 Enemy AI: Some enemies feature pathfinding AI, bringing strategic depth and unpredictability to their behavior.
+
 Timed Shooting System: The final monster challenges players with a timed shooting mechanism, intensifying gameplay.
+
 Cross-Platform Compatibility: You can enjoy Wildwood Run on both Windows and Android platforms, thanks to scripts that manage platform-specific features through conditional compilation.
+
 Tile Maps: Ground and terrain elements are managed efficiently using tile maps, ensuring smooth gameplay and a polished appearance.
+
 Star Rating System: As you collect gems in each level, our star rating system provides animated rewards, encouraging excellence.
 
 ### Gameplay & Features
@@ -27,11 +34,14 @@ Star Rating System: As you collect gems in each level, our star rating system pr
 Wildwood Run offers an exciting gaming experience with a combination of engaging gameplay elements and features:
 
 Level Progression: Unlock new levels by successfully completing the previous ones.
+
 Puzzles: Solve intricate puzzles to advance through the game.
+
 Enemies: Battle against a variety of enemies with distinct behaviors and abilities.
+
 Traps: Avoid deadly traps and obstacles that test your agility and reflexes.
+
 Menus: Enjoy fully functional menus for starting the game, pausing, and handling game over situations.
-Sound Management: Immerse yourself in the game with dynamic sound effects and background music.
 
 ### Controls
 
