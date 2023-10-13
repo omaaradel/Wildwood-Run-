@@ -11,7 +11,7 @@ https://github.com/omaaradel/Wildwood-Run-/assets/116403978/48be785b-b6c0-4799-9
 
 ### Game Mechanics & Coding
 
-Wildwood Run is not only an exciting game but also a showcase of sophisticated coding and game mechanics:
+##### Wildwood Run is not only an exciting game but also a showcase of sophisticated coding and game mechanics:
 
 Parallax Backgrounds: We've implemented a parallax effect to add depth and immersion to the game's backgrounds, enhancing the visual experience.
 
@@ -30,8 +30,6 @@ Tile Maps: Ground and terrain elements are managed efficiently using tile maps, 
 Star Rating System: As you collect gems in each level, our star rating system provides animated rewards, encouraging excellence.
 
 ### Gameplay & Features
-
-Wildwood Run offers an exciting gaming experience with a combination of engaging gameplay elements and features:
 
 Level Progression: Unlock new levels by successfully completing the previous ones.
 
