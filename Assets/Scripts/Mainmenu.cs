@@ -28,8 +28,6 @@ public class Mainmenu : MonoBehaviour
     }
     public void quitgame()
     {
-
-        PlayerPrefs.DeleteAll();
         Application.Quit();
     }   
 }

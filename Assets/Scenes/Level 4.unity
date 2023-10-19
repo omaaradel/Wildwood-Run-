@@ -17278,6 +17278,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4631409834719922708}
     m_Modifications:
+    - target: {fileID: 8116361876419295984, guid: 1c5f25037cf9c984aba3f5a678420e5c, type: 3}
+      propertyPath: axisOptions
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8116361876419295996, guid: 1c5f25037cf9c984aba3f5a678420e5c, type: 3}
       propertyPath: m_Name
       value: Fixed Joystick
@@ -17420,7 +17424,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 7839383974359174836}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d005370b84cf9904dab35eafbda7ccc6, type: 3}
   m_Name: 
@@ -24700,9 +24704,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1348699204192789063, guid: dd105dbaaed87ac48b251070a8ef4062, type: 3}
+      propertyPath: joystick
+      value: 
+      objectReference: {fileID: 1061576148}
+    - target: {fileID: 1348699204192789063, guid: dd105dbaaed87ac48b251070a8ef4062, type: 3}
+      propertyPath: jumpHeight
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1498890577264990548, guid: dd105dbaaed87ac48b251070a8ef4062, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7839383975005124611, guid: dd105dbaaed87ac48b251070a8ef4062, type: 3}
       propertyPath: m_audioClip
@@ -24814,7 +24826,7 @@ PrefabInstance:
       objectReference: {fileID: 4631409834719922709}
     - target: {fileID: 9114332332026948791, guid: dd105dbaaed87ac48b251070a8ef4062, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7839383975005124615, guid: dd105dbaaed87ac48b251070a8ef4062, type: 3}

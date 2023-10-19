@@ -166,7 +166,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 11926171}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e88932c94585d444a8e51673cc6af24c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -4694,7 +4694,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 31038785}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e88932c94585d444a8e51673cc6af24c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -8861,7 +8861,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 2862553525386429490}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e88932c94585d444a8e51673cc6af24c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -9527,7 +9527,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 369351677}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e88932c94585d444a8e51673cc6af24c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -15173,7 +15173,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 445231135}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e88932c94585d444a8e51673cc6af24c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -28522,7 +28522,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1155789004}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e88932c94585d444a8e51673cc6af24c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -32857,7 +32857,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1160202572}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e88932c94585d444a8e51673cc6af24c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -39641,7 +39641,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1412951747}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e88932c94585d444a8e51673cc6af24c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -45755,7 +45755,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1963415491}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e88932c94585d444a8e51673cc6af24c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -46152,7 +46152,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1999338350}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e88932c94585d444a8e51673cc6af24c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -47137,7 +47137,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 2109982198}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e88932c94585d444a8e51673cc6af24c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
